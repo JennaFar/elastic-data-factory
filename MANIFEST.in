@@ -1,0 +1,10 @@
+include *.py
+include requirements.txt
+include pyproject.toml
+include tox.ini
+include LICENSE
+include README.md
+include ./elasticdatafactory/version.txt
+include ./elasticdatafactory/git_commit_id.txt
+include ./elasticdatafactory/git_remote.txt
+include ./elasticdatafactory/build_tag.txt

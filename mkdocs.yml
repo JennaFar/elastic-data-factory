@@ -1,0 +1,76 @@
+site_name: Elastic Data Factory
+repo_url: https://git.rockfin.com/Data-Intelligence/Elastic-Data-Factory
+site_author: Jenna Farhan
+site_description: Elastic Data Factory Library Documentation
+copyright: 2022, Rocket Companies
+theme: "material"
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - codehilite:
+      guess_lang: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - search
+  - mkdocstrings
+
+nav:
+  - Home: "index.md"
+  - "Code Documentation":
+    - "Helpers Package":
+      - "code/helpers/configuration_helper.md"
+      - "code/helpers/dependency_injection_helper.md"
+      - "code/helpers/factory_helper.md"
+      - "code/helpers/property_helper.md"
+      - "code/helpers/variable_helper.md"
+    - "Runtime Package":
+      - "code/runtime/aspects.md"
+      - "code/runtime/context.md"
+      - "code/runtime/dag.md"
+      - "code/runtime/dag_mixins.md"
+      - "code/runtime/pubsub_manager.md"
+    - "Types Package":
+      - "Providers":
+        - "code/types/providers/context_provider.md"
+        - "code/types/providers/data_cache_provider.md"
+        - "code/types/providers/document_storage_provider.md"
+        - "code/types/providers/key_value_store_provider.md"
+        - "code/types/providers/log_provider.md"
+        - "code/types/providers/metric_storage_provider.md"
+        - "code/types/providers/storage_provider_base.md"
+      - "code/types/aspect_base.md"
+      - "code/types/component_base.md"
+      - "code/types/displayable_base.md"
+      - "code/types/document_base.md"
+      - "code/types/exception_base.md"
+      - "code/types/health_base.md"
+      - "code/types/metadata_base.md"
+      - "code/types/object_base.md"
+      - "code/types/observable_base.md"
+      - "code/types/provider_base.md"
+      - "code/types/pubsub_base.md"
+      - "code/types/schema_base.md"
+      - "code/types/serder_base.md"
+      - "code/types/serialization_base.md"
+      - "code/types/step_base.md"
+  - "Examples":
+    - "examples/component_examples.md"
+    - "examples/metadata_examples.md"
+    - "examples/step_examples.md"
+    - "examples/dag_examples.md"
+    - "examples/provider_examples.md"
+    - "examples/aspect_examples.md"
+    - "examples/context_examples.md"
+    - "examples/healthcheckable_examples.md"
+    - "examples/serialization_examples.md"
+    - "examples/pubsub_examples.md"
+    - "examples/displayable_examples.md"
+    - "examples/document_examples.md"
+    - "examples/analyzer_examples.md"
+    - "examples/pubsub_examples.md"
+    - "examples/observable_examples.md"

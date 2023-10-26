@@ -1,0 +1,13 @@
+{
+	"QueryAccountCreate": ["rm_dp_qtweets_raw_processed_access", "accountactivityevent_base"],
+	"QueryAdobeEvents": ["rktdp_adobe_omniture_raw_processed_access", "adobe_websessionpostevent"],
+	"QueryAdobeLeadformInput": ["rktdp_adobe_omniture_raw_processed_access", "adobe_dq_prcd_data"],
+	"QueryAdobeVisitId": ["rktdp_adobe_omniture_raw_processed_access", "adobe_dq_prcd_data"],
+	"QueryAdobeVisitInfo": ["rktdp_adobe_omniture_raw_processed_access", "adobe_dq_prcd_data"],
+	"QueryExperimentVisitorData": ["rktdp_adobe_omniture_raw_processed_access", "adobe_dq_prcd_data"],
+	"QueryLeadSubmission": ["rm_dp_submissionengine_raw_processed_access", "submissionstrings_base"],
+	"QueryLoanIdentifier": ["rm_northstar_raw_processed_access", "loan_identifier_dim"],
+	"QueryMajorMilestone": ["rm_northstar_raw_processed_access", "loan_major_milestone_fact"],
+	"QueryPreloanId": ["rm_dp_qtweets_raw_processed_access", "preloanguidcreateevent_sourcereferenceidentifiers_sourcereferenceidentifier"],
+	"QueryPreloanPurpose": ["rm_dp_qtweets_raw_processed_access", "preloanguidcreateevent_base"]
+}

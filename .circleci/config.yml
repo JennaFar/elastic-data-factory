@@ -1,0 +1,139 @@
+version: 2.1
+
+#############################################################
+# Shared steps
+#############################################################
+
+enterprise_setup_step: &enterprise_setup_step
+  run:
+    name: "Prepare Enterprise Setup"
+    command: "curl -sL https://tools.circleci.foc.zone/install-certs | bash -"
+attach_workspace_step: &attach_workspace_step
+  attach_workspace:
+    at: "."
+persist_workspace_step: &persist_workspace_step
+  persist_to_workspace:
+    root: "."
+    paths: [ "." ]
+upgrade_installation_tools: &upgrade_installation_tools
+  run:
+    name: "Upgrade Installation Tools"
+    command: |
+      sudo pip install --upgrade pip
+      sudo pip install --upgrade setuptools
+      sudo pip install --upgrade wheel
+add_permissions_to_environment: &add_permissions_to_environment
+  run:
+    name: "Add Permissions to Environment"
+    command: |
+      sudo chown -R circleci:circleci /usr/local/bin
+      sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+add_version_tag: &add_version_tag
+  run:
+    name: "Add distribution version tag"
+    command: |
+      echo "export CIRCLE_TAG=$(git describe --tags --abbrev=0)" >> $BASH_ENV
+      echo ${CIRCLE_TAG} # print version information
+add_git_commit_id: &add_git_commit_id
+  run:
+    name: "Add Git Commit ID"
+    command: |
+      printf "$(git rev-parse HEAD)" > ./elasticdatafactory/git_commit_id.txt
+      printf "$(git remote get-url --all origin)" > ./elasticdatafactory/git_remote.txt
+add_built_tag: &add_built_tag
+  run:
+    name: "Add Build Tag"
+    command: |
+      # save the build tag to the build_tag.txt file, if it is set
+      if [ ! -z "$CIRCLE_TAG" ]  && [ ${CIRCLE_TAG:0:1} = "v" ];
+      then
+        echo -e "$CIRCLE_TAG" >> ./elasticdatafactory/build_tag.txt
+      else
+        echo -e "dev" >> ./elasticdatafactory/build_tag.txt
+      fi
+add_src_version: &add_src_version
+  run:
+    name: "Add Source Code Version"
+    command: |
+      # save the version.txt file only when it is set and starts with a "v"
+      if [ ! -z "$CIRCLE_TAG" ] && [ ${CIRCLE_TAG:0:1} = "v" ];
+      then
+        echo -e ${CIRCLE_TAG:1} >> ./elasticdatafactory/version.txt
+      fi
+create_pypirc_file: &create_pypirc_file
+  run:
+    name: "Create .pypirc file"
+    command: |
+      touch .pypirc
+       echo -e "[distutils]" >> ~/.pypirc
+       echo -e "index-servers = local" >> ~/.pypirc
+       echo -e "[local]" >> ~/.pypirc
+       echo -e "repository: https://artifactory.foc.zone/artifactory/api/pypi/pypi-local" >> ~/.pypirc
+       echo -e "username: $PYPI_USERNAME" >> ~/.pypirc
+       echo -e "password: $PYPI_PASSWORD" >> ~/.pypirc
+
+#############################################################
+# Define your jobs
+#############################################################
+
+jobs:
+  
+  ##############
+  # Common jobs
+  ##############
+  
+  checkout_code:
+    docker:
+      - image: circleci/python:3.6.8
+    working_directory: "~/project"
+    steps:
+      - checkout
+      - *persist_workspace_step
+  
+  #######################
+  # Package building jobs
+  #######################
+  
+  build_master_branch:
+    docker:
+      - image: circleci/python:3.6.8
+    working_directory: "~/project"
+    steps:
+      - *attach_workspace_step
+      - *upgrade_installation_tools
+      - *add_version_tag
+      - *add_git_commit_id
+      - *add_built_tag
+      - *add_src_version
+      - *create_pypirc_file
+      - run:
+          name: "Publish Master Branch Build to JFrog"
+          command: |
+            if [ ! -z "$CIRCLE_TAG" ]  && [ ${CIRCLE_TAG:0:1} = "v" ];
+            then
+              python setup.py sdist bdist_wheel bdist_egg egg_info -Db "" upload -r local
+            else
+              python setup.py sdist bdist_wheel bdist_egg egg_info --tag-build=dev upload -r local
+            fi
+#############################################################
+# Define your workflow
+#############################################################
+
+workflows:
+  version: 2.1
+  pipeline:
+    jobs:
+      - checkout_code:
+          filters:
+            branches:
+              only: master  # executes on master branch on all tags
+            tags:
+              only: /.*/
+      - build_master_branch:
+          requires: 
+            - checkout_code
+          filters:
+            branches:
+              only: master  # executes on master branch on all tags starting with v
+            tags:
+              only: /^v.*/
