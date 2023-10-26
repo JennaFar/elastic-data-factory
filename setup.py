@@ -26,7 +26,7 @@ setup(
     url="https://github.com/JennaFar/elastic-data-factory",
     project_urls={
         "Bug Tracker": "https://github.com/JennaFar/elastic-data-factoryissues",
-        "Changelog": "https://github.com/JennaFar/elastic-data-factory/blob/master/CHANGELOG.md",
+        "Changelog": "https://github.com/JennaFar/elastic-data-factory/blob/main/CHANGELOG.md",
     },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
