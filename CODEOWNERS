@@ -7,8 +7,8 @@
 # Examples:
 
 # Member with username "JennaFar" and member with email "jennafar251@gmail.com"
-# own any Python file in the repository
-*.py JennaFar jennafar251@gmail.com
+# own any Python files in this repository
+*.py @jennafar jennafar251@gmail.com
 
 # Jenna handles Gradle files
 *.html @jennafar
@@ -21,4 +21,4 @@
 docs/* @jennafar
 
 # This file itself is owned by members who are assigned the Project Admin role in this project.
-CODEOWNERS "Project Admin"
+CODEOWNERS @jennafar
