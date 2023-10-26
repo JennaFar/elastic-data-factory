@@ -8,7 +8,7 @@
 
 # Member with username "JennaFar" and member with email "jennafar251@gmail.com"
 # own any Python files in this repository
-*.py @jennafar jennafar251@gmail.com
+*.py @jennafar
 
 # Jenna handles Gradle files
 *.html @jennafar
