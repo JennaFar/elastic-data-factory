@@ -40,7 +40,7 @@ dependencies = [
 [project.urls]
 "Repository" = "https://git.rockfin.com/Data-Intelligence/Query-Store-for-Data-Factory"
 "Bug Tracker" = "https://git.rockfin.com/Data-Intelligence/Query-Store-for-Data-Factory/issues"
-"Changelog" = "https://git.rockfin.com/Data-Intelligence/Query-Store-for-Data-Factory/blob/master/CHANGELOG.md"
+"Changelog" = "https://git.rockfin.com/Data-Intelligence/Query-Store-for-Data-Factory/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 interactive =  ["notebook>=6.1.5", "jupyter>=1.0.0"]
