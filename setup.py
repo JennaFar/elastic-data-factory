@@ -11,22 +11,22 @@ with open("LICENSE", "r", encoding="utf-8") as license_file:
     license_text = license_file.read()
 
 setup(
-    name='Elastic-Data-Factory',
+    name='elastic-data-factory',
     package_dir={'': "./"},
     packages=find_packages(where="./", exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     version=version,
     description='Elastic Data Factory for Feature Discovery and Visualization',
-    author='Jenna Farhan',
-    author_email="jennafarhan@rocketcentral.com",
+    author='Jenna Far',
+    author_email="jennafar@gmail.com",
     long_description=long_description,
     long_description_content_type="text/markdown",
     license=license_text,
     platform=any,
     include_package_data=True,
-    url="https://git.rockfin.com/Data-Intelligence/Query-Store-for-Data-Factory",
+    url="https://github.com/JennaFar/elastic-data-factory",
     project_urls={
-        "Bug Tracker": "https://git.rockfin.com/Data-Intelligence/Query-Store-for-Data-Factory/issues",
-        "Changelog": "https://git.rockfin.com/Data-Intelligence/Query-Store-for-Data-Factory/blob/master/CHANGELOG.md",
+        "Bug Tracker": "https://github.com/JennaFar/elastic-data-factoryissues",
+        "Changelog": "https://github.com/JennaFar/elastic-data-factory/blob/master/CHANGELOG.md",
     },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
