@@ -1,5 +1,5 @@
 [project]
-name = "Elastic-Data-Factory"
+name = "elastic-data-factory"
 description = "Elastic Data Factory for Feature Discovery and Visualization"
 dynamic = ["version", "readme"]
 authors = [
