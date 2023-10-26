@@ -13,8 +13,8 @@ Try 'make_dataset.py --help' for help.
 
 Example:
 
-python make_dataset.py 2021-11-28 2021-11-28 QueryMajorMilestone 
-                       rm_northstar_raw_processed_access rcd-datascientist ALL
+python make_dataset.py 2021-11-28 2021-11-28 QueryMilestones 
+                       milestone_processed datascientist ALL
 ```
 
 Project Organization
