@@ -1,8 +1,8 @@
 site_name: Elastic Data Factory
-repo_url: https://git.rockfin.com/Data-Intelligence/Elastic-Data-Factory
-site_author: Jenna Farhan
+repo_url: https://github.com/JennaFar/elastic-data-factory
+site_author: Jenna Far
 site_description: Elastic Data Factory Library Documentation
-copyright: 2022, Rocket Companies
+copyright: 2023, Jenna Far
 theme: "material"
 
 markdown_extensions:
