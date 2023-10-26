@@ -6,19 +6,19 @@
 
 # Examples:
 
-# Member with username "JFarhan" and member with email "jennafarhan@rocketcentral.com"
+# Member with username "JennaFar" and member with email "jennafar251@gmail.com"
 # own any Python file in the repository
-*.py JFarhan jennafarhan@rocketcentral.com
+*.py JennaFar jennafarhan@rocketcentral.com
 
 # Jenna handles Gradle files
-*.html @jfarhan
+*.html @jennafar
 
 # Jenna handles all other files
-* @jfarhan
+* @jennafar
 
 # All members who are assigned the Project Collaborator role own any file under docs/ directory
 # anywhere in the repository, but not further nested files
-docs/* @jfarhan
+docs/* @jennafar
 
 # This file itself is owned by members who are assigned the Project Admin role in this project.
 CODEOWNERS "Project Admin"
