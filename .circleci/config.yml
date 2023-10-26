@@ -94,7 +94,7 @@ jobs:
   # Package building jobs
   #######################
   
-  build_master_branch:
+  build_main_branch:
     docker:
       - image: circleci/python:3.6.8
     working_directory: "~/project"
@@ -107,7 +107,7 @@ jobs:
       - *add_src_version
       - *create_pypirc_file
       - run:
-          name: "Publish Master Branch Build to JFrog"
+          name: "Publish Main Branch Build to JFrog"
           command: |
             if [ ! -z "$CIRCLE_TAG" ]  && [ ${CIRCLE_TAG:0:1} = "v" ];
             then
@@ -126,14 +126,14 @@ workflows:
       - checkout_code:
           filters:
             branches:
-              only: master  # executes on master branch on all tags
+              only: main  # executes on main branch on all tags
             tags:
               only: /.*/
-      - build_master_branch:
+      - build_main_branch:
           requires: 
             - checkout_code
           filters:
             branches:
-              only: master  # executes on master branch on all tags starting with v
+              only: main  # executes on main branch on all tags starting with v
             tags:
               only: /^v.*/
